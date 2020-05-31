@@ -1,5 +1,4 @@
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.csprojAssemblyReference.cache
-C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Form1.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Properties.Resources.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.csproj.GenerateResource.cache
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.csproj.CoreCompileInputs.cache
@@ -13,3 +12,4 @@ C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\System.Data.SqlServer
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Properties.BD.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.csproj.CopyComplete
 C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS.resources

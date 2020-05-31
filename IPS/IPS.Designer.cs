@@ -1,6 +1,6 @@
 ﻿namespace IPS
 {
-    partial class Form1
+    partial class IPS
     {
         /// <summary>
         /// Обязательная переменная конструктора.
