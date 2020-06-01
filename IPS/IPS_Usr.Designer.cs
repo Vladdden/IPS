@@ -1,6 +1,6 @@
 ﻿namespace IPS
 {
-    partial class IPS
+    partial class IPS_Usr
     {
         /// <summary>
         /// Обязательная переменная конструктора.

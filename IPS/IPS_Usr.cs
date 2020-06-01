@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace IPS
 {
-    public partial class IPS : Form
+    public partial class IPS_Usr : Form
     {
         /*
         int num = 0; 
@@ -41,7 +41,7 @@ namespace IPS
         private SqlCommand cmd;
         SqlDataAdapter adapter;
         DataTable dtMain;
-        public IPS()
+        public IPS_Usr()
         {
             InitializeComponent();
         }
@@ -194,65 +194,6 @@ namespace IPS
             }
         }
 
-        /*static DataTable SendQuery(string message)
-        {
-            TcpClient client = null;
-            SqlDataAdapter adapt;
-            try
-            {
-                client = new TcpClient(address, port);
-                NetworkStream stream = client.GetStream();
-
-                    Console.Write(userName + ": ");
-                    // ввод сообщения
-                    message = String.Format("{0}: {1}", userName, message);
-                    // преобразуем сообщение в массив байтов
-                    byte[] data = Encoding.Unicode.GetBytes(message);
-                    // отправка сообщения
-                    stream.Write(data, 0, data.Length);
-
-                    // получаем ответ
-                    data = new byte[1024]; // буфер для получаемых данных
-                    StringBuilder builder = new StringBuilder();
-                    int bytes = 0;
-                    do
-                    {
-                        bytes = stream.Read(data, 0, data.Length);
-                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    }
-                    while (stream.DataAvailable);
-                    message = builder.ToString();
-                FileStream file1 = new FileStream("db.bin", FileMode.Create); //создаем файловый поток
-                StreamWriter writer = new StreamWriter(file1); //создаем «потоковый писатель» и связываем его с файловым потоком
-                writer.Write(message); //записываем в файл
-                writer.Close(); //закрываем поток. Не закрыв поток, в файл ничего не запишется
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream("db.bin", FileMode.Open))
-                {
-                    DBInfo DBInfo = (DBInfo)formatter.Deserialize(fs);
-                    Console.WriteLine("Объект десериализован");
-                    return DBInfo.Adapter;
-                }  
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-            finally
-            {
-                client.Close();
-
-            }
-        }*/
-    }
-    [Serializable]
-    public class UserInfo
-    {
-        public string userName;
-        public UserInfo(string adapter)
-        {
-            userName = adapter;
-        }
+        
     }
 }

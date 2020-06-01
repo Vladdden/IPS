@@ -59,22 +59,5 @@ namespace IPS.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на USE [master]
-        ///GO
-        ////****** Object:  Database [IPSArchive]    Script Date: 28.05.2020 8:22:40 ******/
-        ///CREATE DATABASE [IPSArchive]
-        /// CONTAINMENT = NONE
-        /// ON  PRIMARY 
-        ///( NAME = N&apos;IPSArchive&apos;, FILENAME = N&apos;c:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\IPSArchive.mdf&apos; , SIZE = 400384KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
-        /// LOG ON 
-        ///( NAME = N&apos;IPSArchive_log&apos;, FILENAME = N&apos;c:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\IPSArchive.ldf&apos; , SIZE = 52416KB , MAXSIZ [остаток строки не уместился]&quot;;.
-        /// </summary>
-        internal static string script {
-            get {
-                return ResourceManager.GetString("script", resourceCulture);
-            }
-        }
     }
 }

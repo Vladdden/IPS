@@ -7,9 +7,9 @@ C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\IPS.exe
 C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\IPS.pdb
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.exe
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.pdb
-C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\Resources\script.sql
 C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\System.Data.SqlServerCe.dll
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Properties.BD.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.csproj.CopyComplete
 C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
-C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS.resources
+C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Login.resources
+C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS_Usr.resources
