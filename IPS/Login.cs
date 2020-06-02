@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -21,43 +22,69 @@ namespace IPS
     {
         const int port = 8888;
         const string address = "127.0.0.1";
+        static bool flag = false;
         UserInfo userInfo;
         public Login()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Enter_IPS_btn_Click(object sender, EventArgs e)
         {
-            string UserLogin = LoginField.Text;
-            string UserPass = PassField.Text;
-            
-            if (UserLogin == userInfo.AdmLogin && UserPass == userInfo.AdmPass) //Admin
+            if (flag == true)
             {
-                this.Hide();
-                IPS_Adm adm = new IPS_Adm();
-                adm.Show();
+                string UserLogin = LoginField.Text;
+                string UserPass = PassField.Text;
+                Enter_IPS_btn.Enabled = true;
+                if (UserLogin != "Введите логин" && UserPass != "Введите пароль"){
+                    if (UserLogin == userInfo.AdmLogin && UserPass == userInfo.AdmPass) //Admin
+                    {
+                        this.Hide();
+                        IPS_Adm adm = new IPS_Adm();
+                        adm.Show();
+                    }
+                    if (UserLogin == userInfo.UsrLogin && UserPass == userInfo.UsrPass) //User
+                    {
+                        this.Hide();
+                        IPS_Usr usr = new IPS_Usr();
+                        usr.Show();
+                    }
+                }
+                else MessageBox.Show(
+                        "Заполните все поля для входа!",
+                         "Ошибка",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error,
+                         MessageBoxDefaultButton.Button1,
+                         MessageBoxOptions.DefaultDesktopOnly);
             }
-            if (UserLogin == userInfo.UsrLogin && UserPass == userInfo.UsrPass) //User
-            {
-                this.Hide();
-                IPS_Usr usr = new IPS_Usr();
-                usr.Show();
-            }
+            else Enter_IPS_btn.Enabled = false;
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             
-            UserInfo usrInfo = new UserInfo("111", "222", "333", "333", "444", "444");
-            using(FileStream fs = new FileStream("db.xml", FileMode.Create))
+            if (System.IO.File.Exists("db.xml"))
+            {
+                using (FileStream fs = new FileStream("db.xml", FileMode.Open))
                 {
-                //formatter.Serialize(fs, usrInfo);
-                DataContractSerializer ser = new DataContractSerializer(typeof(UserInfo));
-                ser.WriteObject(fs, usrInfo);
-                Console.WriteLine("Объект сериализован");
+                    XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                    DataContractSerializer ser = new DataContractSerializer(typeof(UserInfo)); // Deserialize the data and read it from the instance.
+                    userInfo = (UserInfo)ser.ReadObject(reader, true);
+                    reader.Close();
+                }
+                ConnectionTrue();
             }
-            
+            else
+            {
+                CompanyNameLabel.Visible = false;
+            }
+
+
+        }
+
+        private void Connect_btn_Click(object sender, EventArgs e)
+        {
             UserInfo user = null;
             TcpClient client = null;
             try
@@ -80,30 +107,16 @@ namespace IPS
                 while (stream.DataAvailable);
                 string message = builder.ToString();
                 message = message.Replace("Archive_Demo", "IPS");
-                Console.WriteLine($"Данные получены:{message}");
-                FileStream file1 = new FileStream("db1.xml", FileMode.Create); //создаем файловый поток
+                FileStream file1 = new FileStream("db.xml", FileMode.Create); //создаем файловый поток
                 StreamWriter writer = new StreamWriter(file1); //создаем «потоковый писатель» и связываем его с файловым потоком
                 writer.Write(message); //записываем в файл
                 writer.Close(); //закрываем поток. Не закрыв поток, в файл ничего не запишется
                 Console.WriteLine("Данные записаны в файлы");
                 file1.Close();
-                /*
-                BinaryFormatter formatter = new BinaryFormatter();
-                //XmlSerializer formatter = new XmlSerializer(typeof(UserInfo));
-                using (FileStream fs = new FileStream("db1.bin", FileMode.OpenOrCreate))
-                {
-                    //fs.Position = 0;
-                    //UserInfo user = (UserInfo)formatter.Deserialize(fs);
-                    //Console.WriteLine("Объект десериализован");
-                    user = (UserInfo)formatter.Deserialize(fs);
-                }
-                */
-                ////////////////////////
-                using (FileStream fs = new FileStream("db1.xml", FileMode.Open))
+                using (FileStream fs = new FileStream("db.xml", FileMode.Open))
                 {
                     XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-                    DataContractSerializer ser = new DataContractSerializer(typeof(UserInfo));
-                    // Deserialize the data and read it from the instance.
+                    DataContractSerializer ser = new DataContractSerializer(typeof(UserInfo)); // Deserialize the data and read it from the instance.
                     userInfo = (UserInfo)ser.ReadObject(reader, true);
                     reader.Close();
                 }
@@ -117,8 +130,63 @@ namespace IPS
             {
                 client.Close();
             }
-            Console.WriteLine($"Данные преобразованы: {userInfo.CompanyName}");
+            ConnectionTrue();
+        }
+         
+        private void ConnectionTrue()
+        {
             CompanyNameLabel.Text = userInfo.CompanyName;
+            CompanyNameLabel.Visible = true;
+            Sync_label.Text = "ДА";
+            Sync_label.ForeColor = Color.Green;
+            Connect_btn.BackColor = SystemColors.Control;
+            Connect_btn.Enabled = false;
+            flag = true;
+        }
+        private void LoginField_Enter(object sender, EventArgs e)
+        {
+            if (LoginField.Text == "Введите логин")
+            {
+                LoginField.Text = "";
+                LoginField.ForeColor = Color.Black;
+            }
+        }
+
+        private void LoginField_Leave(object sender, EventArgs e)
+        {
+            if (LoginField.Text == "")
+            {
+                LoginField.Text = "Введите логин";
+                LoginField.ForeColor = Color.Gray;
+            }
+        }
+
+        private void PassField_Enter(object sender, EventArgs e)
+        {
+            if (PassField.Text == "Введите пароль")
+            {
+                PassField.Text = "";
+                PassField.UseSystemPasswordChar = true;
+                PassField.ForeColor = Color.Black;
+            }
+        }
+
+        private void PassField_Leave(object sender, EventArgs e)
+        {
+            if (PassField.Text == "")
+            {
+                PassField.UseSystemPasswordChar = false;
+                PassField.Text = "Введите пароль";
+                PassField.ForeColor = Color.Gray;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+        
+            const string url = "https://google.ru";
+            const string browserPath = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+            Process.Start(browserPath, url);
         }
     }
 

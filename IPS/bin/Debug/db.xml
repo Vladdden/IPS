@@ -1,1 +1,1 @@
-<UserInfo xmlns="http://schemas.datacontract.org/2004/07/IPS" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AdmLogin>333</AdmLogin><AdmPass>333</AdmPass><CompanyID>222</CompanyID><CompanyName>111</CompanyName><UsrLogin>444</UsrLogin><UsrPass>444</UsrPass></UserInfo>
+<UserInfo xmlns="http://schemas.datacontract.org/2004/07/IPS" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AdmLogin>123</AdmLogin><AdmPass>123</AdmPass><CompanyID>1</CompanyID><CompanyName>ООО "Полюс"</CompanyName><UsrLogin>321</UsrLogin><UsrPass>321</UsrPass></UserInfo>

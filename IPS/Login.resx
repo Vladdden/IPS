@@ -117,6 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label17.Text" xml:space="preserve">
+    <value>1. При первом включении неободимо произвести 
+синхронизацию программы-клиента с сервером.
+Для этого необходимо нажать на кнопку "Соединить".
+2. Если статус синхронизации изменится на "Да", то 
+программа считается активированной и готовой к
+работе. В противном случае обратитесь к своему
+системному администратору.
+3. ИПС рассчитана на два типа пользователей:
+*Администратор
+*Обычный пользователь
+Для входа необходимо ввести логин и пароль,
+предоставленные вместе с данной программой.
+
+Данная программа является собственность компании
+ООО "Архив кнопка" и ее использование подоразумевает
+ваше полное и безоговорочное согласие со всеми 
+условиями лицензии:</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
