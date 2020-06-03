@@ -42,21 +42,30 @@ namespace IPS
                         this.Hide();
                         IPS_Adm adm = new IPS_Adm();
                         adm.Show();
+                        return;
                     }
+                   
                     if (UserLogin == userInfo.UsrLogin && UserPass == userInfo.UsrPass) //User
                     {
                         this.Hide();
                         IPS_Usr usr = new IPS_Usr();
                         usr.Show();
                     }
+                    else MessageBox.Show(
+                            "Данный пользователь не обнаружен, проверьте верность введенных данных!",
+                             "Ошибка",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Error,
+                             MessageBoxDefaultButton.Button1,
+                             MessageBoxOptions.DefaultDesktopOnly);
                 }
                 else MessageBox.Show(
-                        "Заполните все поля для входа!",
-                         "Ошибка",
-                         MessageBoxButtons.OK,
-                         MessageBoxIcon.Error,
-                         MessageBoxDefaultButton.Button1,
-                         MessageBoxOptions.DefaultDesktopOnly);
+                       "Заполните все поля для входа!",
+                        "Ошибка",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
             }
             else Enter_IPS_btn.Enabled = false;
         }

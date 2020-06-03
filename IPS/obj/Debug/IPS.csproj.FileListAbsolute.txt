@@ -13,3 +13,5 @@ C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.csproj.CopyComple
 C:\Users\Владислав\source\repos\IPS\IPS\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Login.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS_Usr.resources
+C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS_Adm.resources
+C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.SearchForm.resources

@@ -30,12 +30,6 @@ namespace IPS
             */
         const int port = 8888;
         const string address = "127.0.0.1";
-        static string userName = "Client #1 - Vlad";
-        private static string ServerName = @"localhost\sqlexpress";
-        private static string Port = "3306";
-        private static string Username = @"Владислав-ПК\\Владислав";
-        private static string Password = "";
-        private static string DBName = "IPSArchive";
         private static string connectionString = @"workstation id=ArchiveDB.mssql.somee.com;packet size=4096;user id=ArchiveUser;pwd=123456789;data source=ArchiveDB.mssql.somee.com;persist security info=False;initial catalog=ArchiveDB";
         private SqlConnection conn;
         private SqlCommand cmd;
@@ -52,8 +46,6 @@ namespace IPS
                 // connect to server
                 conn = new SqlConnection(connectionString);
                 conn.Open();
-                // to database "master" to check if our database exists
-                // to create it if it isn't exists
                 Console.WriteLine("Подключение");
 
                 {
@@ -64,74 +56,8 @@ namespace IPS
                     Console.WriteLine("\tСервер: {0}", conn.DataSource);
                     Console.WriteLine("\tВерсия сервера: {0}", conn.ServerVersion);
                     Console.WriteLine("\tСостояние: {0}", conn.State);
-                    //Console.WriteLine("\tWorkstationld: {0}", conn.WorkstationId);
                 }
-                // create database if not exists
-                /*
-                try
-                {
-                    using (cmd = new FbCommand(cmd_start, conn, transaction))
-                    {
-                        Console.WriteLine(1);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    // закрываем подключение
-                    conn.Close();
-                    Console.WriteLine("Подключение закрыто...");
-                }
-            
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////
-                try
-                {
-                    using (cmd = new SqlCommand(String.Format("CREATE DATABASE [{0}] ON (" +
-                                                        "    NAME = {0}, " +
-                                                        "    FILENAME = '" + Application.StartupPath + "\\{0}.mdf'" +
-                                                        ");",
-                                                        DBName), conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    // закрываем подключение
-                    conn.Close();
-                    Console.WriteLine("Подключение закрыто...");
-                }
-            
-                // connect to db
-                /////conn = new SqlCeConnection(connectionString);
-            
 
-                // create table "Table 1" if not exists
-                using (SqlCommand cmd = new SqlCommand(String.Format(
-                                          "IF NOT EXISTS (" +
-                                          "    SELECT [name] " +
-                                          "    FROM sys.tables " +
-                                          "    WHERE [name] = '{0}'" +
-                                          ") " +
-                                          "CREATE TABLE [{0}] (" +
-                                          "    id [INT] IDENTITY(1,1) PRIMARY KEY CLUSTERED, " +
-                                          "    [text column] [TEXT] NULL, " +
-                                          "    [int column] [INT] NULL " +
-                                          ")",
-                                          "Table 1"), conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }*/
-
-                // get all tables from DB
                 using (DataTable dt = conn.GetSchema("Tables"))
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
@@ -141,8 +67,8 @@ namespace IPS
                             comboBoxTables.Items.Add(dt.Rows[i].ItemArray[dt.Columns.IndexOf("TABLE_NAME")].ToString());
                         }
                     }
-                }//dtMain.Columns["id"].ReadOnly = true; // deprecate id field edit to prevent exceptions*/
-
+                }
+                
             }
             catch (SqlException ex)
             {
@@ -194,6 +120,11 @@ namespace IPS
             }
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.Show();
+        }
     }
 }
