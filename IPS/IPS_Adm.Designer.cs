@@ -124,6 +124,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "IPS_Adm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ИПС Администратор";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IPS_Adm_FormClosed);
             this.Load += new System.EventHandler(this.IPS_Adm_Load);

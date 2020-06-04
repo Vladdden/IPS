@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbStr = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbStr = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -48,13 +48,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск";
             // 
-            // tbStr
-            // 
-            this.tbStr.Location = new System.Drawing.Point(21, 55);
-            this.tbStr.Name = "tbStr";
-            this.tbStr.Size = new System.Drawing.Size(295, 26);
-            this.tbStr.TabIndex = 0;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -64,6 +57,13 @@
             this.label1.Size = new System.Drawing.Size(246, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите значение, которое собираетесь найти";
+            // 
+            // tbStr
+            // 
+            this.tbStr.Location = new System.Drawing.Point(21, 55);
+            this.tbStr.Name = "tbStr";
+            this.tbStr.Size = new System.Drawing.Size(295, 26);
+            this.tbStr.TabIndex = 0;
             // 
             // button1
             // 
@@ -94,6 +94,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "SearchForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поиск";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
