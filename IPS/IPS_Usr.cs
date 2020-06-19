@@ -126,5 +126,13 @@ namespace IPS
             Login loginForm = new Login();
             loginForm.Show();
         }
+
+        private void Search_btn_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            UserSearch sf = new UserSearch();
+            sf.Owner = this;
+            sf.Show();
+        }
     }
 }

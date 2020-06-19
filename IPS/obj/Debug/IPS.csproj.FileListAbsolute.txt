@@ -15,3 +15,4 @@ C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.Login.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS_Usr.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.IPS_Adm.resources
 C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.SearchForm.resources
+C:\Users\Владислав\source\repos\IPS\IPS\obj\Debug\IPS.UserSearch.resources
